@@ -21,7 +21,7 @@ namespace CSVSplitter
 
             // Get the max rows per file.
             var maxRowsString = "";
-            var maxRows = 0;
+            int maxRows;
             while (!int.TryParse(maxRowsString, out maxRows))
             {
                 Console.WriteLine("Please enter the maximum number of rows per file: ");
@@ -30,14 +30,13 @@ namespace CSVSplitter
 
             // Use the first row in the source file as the first row for each file.
             var headerRowString = "";
-            bool headerRow;
             while (headerRowString == null || (headerRowString.ToUpper() != "Y" && headerRowString.ToUpper() != "N"))
             {
                 Console.WriteLine("Use the first row of the source file as the first row of each file? Y/N");
                 headerRowString = Console.ReadLine();
             }
 
-            headerRow = headerRowString.ToUpper() == "Y";
+            var headerRow = headerRowString.ToUpper() == "Y";
             
             // Present the start message.
             var withHeaderMessage = headerRow ? " Using the first row of the source file as the first row for each split file." : "";
