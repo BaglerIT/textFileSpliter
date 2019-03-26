@@ -74,12 +74,12 @@ namespace CSVSplitter
                     if (fileLines == 0)
                     {
                         // Open a new write file.
-                        outFile = new FileStream(sourceFileName + "_split_" + "filesCounter" + sourceFileExt, FileMode.CreateNew);
+                        outFile = new FileStream(sourceFileName + "_split_" + filesCounter + sourceFileExt, FileMode.CreateNew);
                         fileWriter = new StreamWriter(outFile);
                         // Increment the file count.
                         filesCounter++;
                         // Write the first line and increment the count if applicable.
-                        if (headerRow)
+                        if (headerRow && filesCounter > 1)
                         {
                             fileWriter.WriteLine(firstLine);
                             fileLines++;
